@@ -1,10 +1,19 @@
+import Tarea from "../models/tareas.js";
+
 export const prueba = (req, res) => {
   console.log("Desde el controlador de prueba");
   res.send("Prueba desde el controlador");
 };
 
-export const agregarTarea = (req, res) => {
-  console.log("Tarea agregada...");
+export const agregarTarea = async (req, res) => {
+  try {
+    console.log(req);
+    const nuevaTarea = new Tarea(req.body);
+    await nuevaTarea.save();
+    res.status(201).json({ mensaje: "Tarea agregada exitosamente" });
+  } catch (err) {
+    res.status(500).json({ mensaje: "Ocurrio un error al crear la tarea" });
+  }
   res.send("Desde el controlador agregar tareas");
 };
 
