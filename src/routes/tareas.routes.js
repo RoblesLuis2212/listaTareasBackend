@@ -11,10 +11,7 @@ import {
 const router = Router();
 
 // router.route("/test").get(prueba);
-router.route("/").get(obtenerTareas);
-router.route("/:id").get(obtenerIDtarea);
-router.route("/").post(agregarTarea);
-router.route("/:id").put(editarTarea);
-router.route("/:id").delete(borrarTarea);
+router.route("/").post(agregarTarea).get(obtenerTareas);
+router.route("/:id").get(obtenerIDtarea).delete(borrarTarea).put(editarTarea);
 
 export default router;
