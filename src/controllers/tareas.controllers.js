@@ -38,7 +38,7 @@ export const obtenerIDtarea = async (req, res) => {
         .status(404)
         .json({ mensaje: "La tarea solicitada no fue encontrada" });
     }
-    res.status(201).json(tareaBuscada);
+    res.status(200).json(tareaBuscada);
   } catch (err) {
     console.error(err);
     res.status(500).json({ mensaje: "Error al obtener la tarea" });
